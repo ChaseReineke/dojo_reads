@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woo!!</title>
+</head>
+
+<body>
+    <h1>Add a book and review</h1>
+    <form action="/add_book_and_review" method="post">
+        {% csrf_token %}
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+        <label for="existing_author">Choose from the list</label>
+        <select name="existing_author" id="existing_author">
+            {% for author in all_authors %}
+            <option value="{{author.id}}">{{author.name}}</option>
+            {% endfor %}
+        </select><br>
+        <label for="new_author">Or add a new author</label>
+        <input type="text" name="new_author" id="new_author">
+        <b>Review:</b>
+        <textarea name="content" id="content"></textarea>
+        <label for="rating">Rating</label>
+        <select name="rating" id="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select><br>
+        <button>Add Book and Review</button>
+    </form>
+</body>
+
+</html>
